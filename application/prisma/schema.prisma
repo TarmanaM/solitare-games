@@ -1,0 +1,21 @@
+// Prisma schema for Solitaire WebApp using SQLite
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model GameRecord {
+  id                   String    @id @default(cuid())
+  score                Int       @default(0)
+  moves                Int       @default(0)
+  timeElapsedInSeconds Int       @default(0)
+  won                  Boolean   @default(false)
+  playerName           String    @default("Player")
+  createdAt            DateTime  @default(now())
+  completedAt          DateTime?
+}
